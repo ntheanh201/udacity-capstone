@@ -1,6 +1,6 @@
 # Step 1: Modules caching
 FROM golang:1.19.0-alpine3.16 as modules
-COPY go.mod go.sum /modules/
+COPY go.mod /modules/
 WORKDIR /modules
 RUN go mod download
 
