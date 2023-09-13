@@ -25,3 +25,11 @@ within your cluster, or another 3rd party Docker repository) ; and
 Deploying these Docker container(s) to a small Kubernetes cluster. For your Kubernetes cluster you can either use AWS
 Kubernetes as a Service, or build your own Kubernetes cluster. To deploy your Kubernetes cluster, use either Ansible or
 Cloudformation. Preferably, run these from within Jenkins or Circle CI as an independent pipeline.
+
+
+## Scope
+
+- Continuous Integration tool: CircleCI
+- Deployment type: Rolling Deployment
+- Infrastructure as Code: CDK
+- Linting: golangci-lint
