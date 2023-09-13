@@ -52,7 +52,7 @@ workflows:
           requires:
             - lint
           context:
-            - server_variables
+            - udacity_aws
           filters:
             branches:
               only:
