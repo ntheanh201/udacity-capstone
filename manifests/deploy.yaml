@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udacity-capstone
+  labels:
+    app: udacity-capstone
+spec:
+  replicas: 2
+  strategy:
+    - rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: udacity-capstone
+  template:
+    metadata:
+      name: udacity-capstone
+      labels:
+        app: udacity-capstone
+    spec:
+      containers:
+        - name: udacity-capstone
+          image: https://ghcr.io/ntheanh201/udacity-capstone:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3333
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: udacity-capstone-svc
+spec:
+  selector:
+    app: udacity-capstone-svc
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3333
+  type: NodePort
