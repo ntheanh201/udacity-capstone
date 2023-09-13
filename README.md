@@ -33,3 +33,15 @@ Cloudformation. Preferably, run these from within Jenkins or Circle CI as an ind
 - Deployment type: Rolling Deployment
 - Infrastructure as Code: CDK
 - Linting: golangci-lint
+
+## GitHub Container Registry
+
+- https://github.com/users/ntheanh201/packages/container/package/udacity-capstone
+
+## CircleCI Configuration
+
+- Context variables: udacity_aws
+  - GHCR_PAT: GitHub container registry personal access token
+  - GHCR_USER: GitHub container registry username
+  - AWS_ACCESS_KEY: AWS Access key ID
+  - AWS_SECRET_KEY: AWS Secret access key
