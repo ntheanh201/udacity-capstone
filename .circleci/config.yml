@@ -49,6 +49,8 @@ workflows:
     jobs:
       - lint
       - build-and-push:
+          requires:
+            - lint
           context:
             - server_variables
           filters:
