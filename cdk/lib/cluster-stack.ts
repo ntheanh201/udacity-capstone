@@ -26,6 +26,7 @@ export class EksClusterStack extends cdk.Stack {
       defaultCapacity: 2, // Specify the desired number of worker nodes
       mastersRole: clusterAdmin,
       vpc,
+      // defaultCapacityInstance: ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
       clusterName: `${id}`,
       kubectlLayer: new KubectlV27Layer(this, 'KubectlLayer')
     });
