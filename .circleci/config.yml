@@ -10,6 +10,8 @@ jobs:
     steps:
       - checkout
       - run: golangci-lint run
+    environment:
+      GO111MODULE: "off"
   build-and-push:
     parameters:
       user:
