@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: udacity-capstone
-          image: https://ghcr.io/ntheanh201/udacity-capstone:latest
+          image: ghcr.io/ntheanh201/udacity-capstone:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3333
