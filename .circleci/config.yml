@@ -80,6 +80,7 @@ jobs:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
           aws-region: << parameters.aws-region >>
+          cluster-authentication-role-arn: "arn:aws:iam::636188616750:role/EksClusterStack-ClusterAdminRole047D4FCA-19Q5ZW7VZ8URI"
       - run:
           name: Wait for service to be ready
           command: |
