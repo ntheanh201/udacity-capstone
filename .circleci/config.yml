@@ -88,7 +88,7 @@ jobs:
             kubectl get services
             sleep 30
             for attempt in {1..20}; do
-              EXTERNAL_IP=$(kubectl get service demoapp | awk '{print $4}' | tail -n1)
+              EXTERNAL_IP=$(kubectl get service udacity-capstone-svc | awk '{print $4}' | tail -n1)
               echo "Checking external IP: ${EXTERNAL_IP}"
               if [ -n "${EXTERNAL_IP}" ] && [ -z $(echo "${EXTERNAL_IP}" | grep "pending") ]; then
                 break
