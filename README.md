@@ -26,13 +26,18 @@ Deploying these Docker container(s) to a small Kubernetes cluster. For your Kube
 Kubernetes as a Service, or build your own Kubernetes cluster. To deploy your Kubernetes cluster, use either Ansible or
 Cloudformation. Preferably, run these from within Jenkins or Circle CI as an independent pipeline.
 
-
 ## Scope
 
 - Continuous Integration tool: CircleCI
 - Deployment type: Rolling Deployment
-- Infrastructure as Code: CDK
+- Infrastructure as Code: CDK for provisioning VPC, EKS with 2 worker nodes
+- Programming Language: Go
 - Linting: golangci-lint
+- Kubernetes Manifests: Deployment, Service
+
+## GitHub Repository
+
+- https://github.com/ntheanh201/udacity-capstone
 
 ## GitHub Container Registry
 
@@ -41,10 +46,10 @@ Cloudformation. Preferably, run these from within Jenkins or Circle CI as an ind
 ## CircleCI Configuration
 
 - Context variables: udacity_aws
-  - GHCR_PAT: GitHub container registry personal access token
-  - GHCR_USER: GitHub container registry username
+    - GHCR_PAT: GitHub container registry personal access token
+    - GHCR_USER: GitHub container registry username
 
 - Environment Variables:
-  - AWS_ACCESS_KEY_ID: AWS Access key ID
-  - AWS_SECRET_ACCESS_KEY: AWS Secret access key
-  - AWS_DEFAULT_REGION: AWS Region
+    - AWS_ACCESS_KEY_ID: AWS Access key ID
+    - AWS_SECRET_ACCESS_KEY: AWS Secret access key
+    - AWS_DEFAULT_REGION: AWS Region
