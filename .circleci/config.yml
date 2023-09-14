@@ -17,11 +17,11 @@ jobs:
   build-and-push:
     parameters:
       user:
-        description: Name of github user environment variable
+        description: Name of Docker Hub user environment variable
         default: DOCKER_USER
         type: env_var_name
       token:
-        description: Name of github token environment variable
+        description: Name of Docker Hub token environment variable
         default: DOCKER_PASSWORD
         type: env_var_name
     environment:
@@ -35,10 +35,10 @@ jobs:
           docker_layer_caching: true
       - checkout
       - run:
-          name: GHCR Login
+          name: Docker Login
           command: |
             echo "${<< parameters.token >>}" \
-              | docker login ghcr.io -u "${<< parameters.user >>}" --password-stdin
+              | docker login -u "${<< parameters.user >>}" --password-stdin
       - docker/build:
           image: $DOCKER_IMAGE
           tag: $DOCKER_TAG
@@ -85,23 +85,6 @@ jobs:
           install-kubectl: true
           aws-region: << parameters.aws-region >>
           cluster-authentication-role-arn: << parameters.role-name >>
-#      - run:
-#          name: Wait for service to be ready
-#          command: |
-#            kubectl get pods
-#            kubectl get services
-#            sleep 30
-#            for attempt in {1..20}; do
-#              EXTERNAL_IP=$(kubectl get service udacity-capstone-svc | awk '{print $4}' | tail -n1)
-#              echo "Checking external IP: ${EXTERNAL_IP}"
-#              if [ -n "${EXTERNAL_IP}" ] && [ -z $(echo "${EXTERNAL_IP}" | grep "pending") ]; then
-#                break
-#              fi
-#              echo "Waiting for external IP to be ready: ${EXTERNAL_IP}"
-#              sleep 10
-#            done
-#            sleep 180
-#            curl -s --retry 10 "http://$EXTERNAL_IP"
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: manifests/deploy.yaml
@@ -122,19 +105,8 @@ workflows:
           cluster-name: EksClusterStack
           aws-region: $AWS_DEFAULT_REGION
           role-name: $AWS_EKS_ROLE
-          image-name: "ghcr.io/ngocnt91/udacity-capstone:${CIRCLE_SHA1}"
+          image-name: "docker.io/ngocnt91/udacity-capstone:${CIRCLE_SHA1}"
           context:
             - udacity_aws
           requires:
             - build-and-push
-#      - aws-eks/update-container-image:
-#          cluster-name: EksClusterStack
-#          container-image-updates: udacity-capstone=ghcr.io/ntheanh201/udacity-capstone:${CIRCLE_SHA1}
-#          post-steps:
-#            - kubernetes/delete-resource:
-#                resource-names: udacity-capstone
-#                resource-types: deployment
-#                wait: true
-#          requires:
-#            - create-deployment
-#          resource-name: deployment/udacity-capstone
