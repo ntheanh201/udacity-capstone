@@ -61,6 +61,10 @@ jobs:
         description: |
           Name of the docker image to be deployed
         type: string
+      role-name:
+        description: |
+          Name of Role EKS
+        type: string
       aws-region:
         description: |
           AWS region
@@ -80,7 +84,7 @@ jobs:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
           aws-region: << parameters.aws-region >>
-          cluster-authentication-role-arn: "arn:aws:iam::636188616750:role/EksClusterStack-ClusterAdminRole047D4FCA-19Q5ZW7VZ8URI"
+          cluster-authentication-role-arn: << parameters.role-name >>
 #      - run:
 #          name: Wait for service to be ready
 #          command: |
@@ -119,6 +123,7 @@ workflows:
       - create-deployment:
           cluster-name: EksClusterStack
           aws-region: $AWS_DEFAULT_REGION
+          role-name: $AWS_EKS_ROLE
           image-name: "ghcr.io/ntheanh201/udacity-capstone:${CIRCLE_SHA1}"
           context:
             - udacity_aws

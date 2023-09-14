@@ -53,3 +53,4 @@ Cloudformation. Preferably, run these from within Jenkins or Circle CI as an ind
     - AWS_ACCESS_KEY_ID: AWS Access key ID
     - AWS_SECRET_ACCESS_KEY: AWS Secret access key
     - AWS_DEFAULT_REGION: AWS Region
+    - AWS_EKS_ROLE: AWS EKS role name
