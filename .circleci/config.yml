@@ -75,7 +75,7 @@ jobs:
             # Capstone project more portable.
             BUILD_DATE=$(date '+%Y%m%d%H%M%S')
             cat manifests/deploy.yaml.template |\
-               sed "s|DOCKER_IMAGE_NAME|<< parameters.image-name >>|\g;" > manifests/deploy.yaml
+               sed -i "s/DOCKER_IMAGE_NAME/<< parameters.image-name >>/g;" > manifests/deploy.yaml
       - aws-eks/update-kubeconfig-with-authenticator:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
