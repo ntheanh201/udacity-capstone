@@ -46,5 +46,5 @@ Cloudformation. Preferably, run these from within Jenkins or Circle CI as an ind
     - AWS_SECRET_ACCESS_KEY: AWS Secret access key
     - AWS_DEFAULT_REGION: AWS Region
     - AWS_EKS_ROLE: AWS EKS role name
-    - DOCKER_USER: Docker registry personal access token
-    - DOCKER_PASSWORD: Docker registry username
+    - DOCKER_USER: Docker registry username
+    - DOCKER_PASSWORD: Docker registry password
