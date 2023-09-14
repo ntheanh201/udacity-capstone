@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: udacity-capstone-svc
+spec:
+  selector:
+    app: udacity-capstone
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3333
+  type: LoadBalancer

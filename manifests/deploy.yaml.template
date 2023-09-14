@@ -22,21 +22,8 @@ spec:
     spec:
       containers:
         - name: udacity-capstone
-          image: ghcr.io/ntheanh201/udacity-capstone:latest
+          image: DOCKER_IMAGE_NAME
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3333
       restartPolicy: Always
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: udacity-capstone-svc
-spec:
-  selector:
-    app: udacity-capstone
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3333
-  type: LoadBalancer
