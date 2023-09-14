@@ -25,7 +25,7 @@ jobs:
         default: DOCKER_PASSWORD
         type: env_var_name
     environment:
-      DOCKER_IMAGE: docker.io/ngocnt91/udacity-capstone
+      DOCKER_IMAGE: ngocnt91/udacity-capstone
       DOCKER_TAG: latest
     executor: docker/docker
 
