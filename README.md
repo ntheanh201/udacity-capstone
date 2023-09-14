@@ -43,5 +43,8 @@ Cloudformation. Preferably, run these from within Jenkins or Circle CI as an ind
 - Context variables: udacity_aws
   - GHCR_PAT: GitHub container registry personal access token
   - GHCR_USER: GitHub container registry username
-  - AWS_ACCESS_KEY: AWS Access key ID
-  - AWS_SECRET_KEY: AWS Secret access key
+
+- Environment Variables:
+  - AWS_ACCESS_KEY_ID: AWS Access key ID
+  - AWS_SECRET_ACCESS_KEY: AWS Secret access key
+  - AWS_DEFAULT_REGION: AWS Region
