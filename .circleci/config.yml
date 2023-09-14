@@ -74,8 +74,7 @@ jobs:
             # Replace the placeholders in the manifest with the intended values.
             # This is to avoid hardcoding the image name in the manifest, to make this
             # Capstone project more portable.
-            cat manifests/deploy.yaml.template |\
-            sed -i "s|DOCKER_IMAGE_NAME|<< parameters.image-name >>|g;" > manifests/deploy.yaml
+            cat manifests/deploy.yaml.template | sed -i "s|DOCKER_IMAGE_NAME|<< parameters.image-name >>|g;" > manifests/deploy.yaml
       - aws-eks/update-kubeconfig-with-authenticator:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
