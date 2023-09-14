@@ -126,7 +126,7 @@ workflows:
             - build-and-push
       - aws-eks/update-container-image:
           cluster-name: EksClusterStack
-          container-image-updates: "ghcr.io/ntheanh201/udacity-capstone:${CIRCLE_SHA1}"
+          container-image-updates: udacity-capstone=ghcr.io/ntheanh201/udacity-capstone:${CIRCLE_SHA1}
           post-steps:
             - kubernetes/delete-resource:
                 resource-names: udacity-capstone
