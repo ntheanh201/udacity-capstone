@@ -124,14 +124,14 @@ workflows:
             - udacity_aws
           requires:
             - build-and-push
-      - aws-eks/update-container-image:
-          cluster-name: EksClusterStack
-          container-image-updates: udacity-capstone=ghcr.io/ntheanh201/udacity-capstone:${CIRCLE_SHA1}
-          post-steps:
-            - kubernetes/delete-resource:
-                resource-names: udacity-capstone
-                resource-types: deployment
-                wait: true
-          requires:
-            - create-deployment
-          resource-name: deployment/udacity-capstone
+#      - aws-eks/update-container-image:
+#          cluster-name: EksClusterStack
+#          container-image-updates: udacity-capstone=ghcr.io/ntheanh201/udacity-capstone:${CIRCLE_SHA1}
+#          post-steps:
+#            - kubernetes/delete-resource:
+#                resource-names: udacity-capstone
+#                resource-types: deployment
+#                wait: true
+#          requires:
+#            - create-deployment
+#          resource-name: deployment/udacity-capstone
