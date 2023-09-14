@@ -35,11 +35,7 @@ Cloudformation. Preferably, run these from within Jenkins or Circle CI as an ind
 - Linting: golangci-lint
 - Kubernetes Manifests: Deployment, Service
 
-## GitHub Repository
-
-- https://github.com/ntheanh201/udacity-capstone
-
-## GitHub Container Registry
+## Docker Registry
 
 - https://github.com/users/ntheanh201/packages/container/package/udacity-capstone
 

@@ -18,14 +18,14 @@ jobs:
     parameters:
       user:
         description: Name of github user environment variable
-        default: GHCR_USER
+        default: DOCKER_USER
         type: env_var_name
       token:
         description: Name of github token environment variable
-        default: GHCR_PAT
+        default: DOCKER_PASSWORD
         type: env_var_name
     environment:
-      DOCKER_IMAGE: ghcr.io/ntheanh201/udacity-capstone
+      DOCKER_IMAGE: docker.io/ngocnt91/udacity-capstone
       DOCKER_TAG: latest
     executor: docker/docker
 
@@ -114,8 +114,6 @@ workflows:
     jobs:
       - lint
       - build-and-push:
-          user: GHCR_USER
-          token: GHCR_PAT
           context:
             - udacity_aws
           requires:
@@ -124,7 +122,7 @@ workflows:
           cluster-name: EksClusterStack
           aws-region: $AWS_DEFAULT_REGION
           role-name: $AWS_EKS_ROLE
-          image-name: "ghcr.io/ntheanh201/udacity-capstone:${CIRCLE_SHA1}"
+          image-name: "ghcr.io/ngocnt91/udacity-capstone:${CIRCLE_SHA1}"
           context:
             - udacity_aws
           requires:
