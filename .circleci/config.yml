@@ -81,23 +81,23 @@ jobs:
           install-kubectl: true
           aws-region: << parameters.aws-region >>
           cluster-authentication-role-arn: "arn:aws:iam::636188616750:role/EksClusterStack-ClusterAdminRole047D4FCA-19Q5ZW7VZ8URI"
-      - run:
-          name: Wait for service to be ready
-          command: |
-            kubectl get pods
-            kubectl get services
-            sleep 30
-            for attempt in {1..20}; do
-              EXTERNAL_IP=$(kubectl get service udacity-capstone-svc | awk '{print $4}' | tail -n1)
-              echo "Checking external IP: ${EXTERNAL_IP}"
-              if [ -n "${EXTERNAL_IP}" ] && [ -z $(echo "${EXTERNAL_IP}" | grep "pending") ]; then
-                break
-              fi
-              echo "Waiting for external IP to be ready: ${EXTERNAL_IP}"
-              sleep 10
-            done
-            sleep 180
-            curl -s --retry 10 "http://$EXTERNAL_IP"
+#      - run:
+#          name: Wait for service to be ready
+#          command: |
+#            kubectl get pods
+#            kubectl get services
+#            sleep 30
+#            for attempt in {1..20}; do
+#              EXTERNAL_IP=$(kubectl get service udacity-capstone-svc | awk '{print $4}' | tail -n1)
+#              echo "Checking external IP: ${EXTERNAL_IP}"
+#              if [ -n "${EXTERNAL_IP}" ] && [ -z $(echo "${EXTERNAL_IP}" | grep "pending") ]; then
+#                break
+#              fi
+#              echo "Waiting for external IP to be ready: ${EXTERNAL_IP}"
+#              sleep 10
+#            done
+#            sleep 180
+#            curl -s --retry 10 "http://$EXTERNAL_IP"
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: manifests/deploy.yaml
