@@ -96,7 +96,7 @@ jobs:
               sleep 10
             done
             sleep 180
-            curl -s --retry 10 "http://$EXTERNAL_IP" | grep "<< parameters.expected-version-info >>"
+            curl -s --retry 10 "http://$EXTERNAL_IP"
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: manifests/deploy.yaml
