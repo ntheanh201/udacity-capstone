@@ -16,6 +16,10 @@ func getRoot(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func testLint() int {
+	return 0.5
+}
+
 func main() {
 	http.HandleFunc("/", getRoot)
 
